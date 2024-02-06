@@ -99,16 +99,14 @@ const DashboardSidebar = () => {
                             </Box>
                             <Box textAlign="center">
                                 <Typography
-                                    variant="h2"
+                                    variant="h4"
                                     color={colors.grey[100]}
                                     fontWeight="bold"
                                     sx={{ m: "10px 0 0 0" }}
                                 >
-                                    Ed Roh
+                                    Admin
                                 </Typography>
-                                <Typography variant="h5" color={colors.greenAccent[500]}>
-                                    VP Fancy Admin
-                                </Typography>
+
                             </Box>
                         </Box>
                     )}
@@ -159,8 +157,8 @@ const DashboardSidebar = () => {
                             User
                         </Typography>
                         <Item
-                            title="Profile Form"
-                            to="/form"
+                            title="Users"
+                            to="/users"
                             icon={<PersonOutlinedIcon />}
                             selected={selected}
                             setSelected={setSelected}
