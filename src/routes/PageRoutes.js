@@ -1,10 +1,11 @@
 import {Route, Routes} from "react-router-dom";
+import PropertyListing from "../scenes/property/PropertyListing";
 
 const PageRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<div>Home Page</div>}/>
-            <Route path="/team" element={<div>Team Page</div>}/>
+            <Route path="/properties" element={<PropertyListing/>}/>
             <Route path="/contacts" element={<div>Contacts Page</div>}/>
             <Route path="/invoices" element={<div>Invoices Page</div>}/>
             <Route path="/form" element={<div>Form Page</div>}/>
