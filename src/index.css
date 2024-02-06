@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap');
 
-html, body, #root .app ,container {
+html, body, #root .app , .content {
   height: 100%;
   width: 100%;
   font-family: "Source Code Pro", sans-serif;
@@ -9,6 +9,12 @@ html, body, #root .app ,container {
 .app{
   display: flex;
   postion: relative;
+}
+
+.content{
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
 }
 
 ::-webkit-scrollbar {
