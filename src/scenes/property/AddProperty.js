@@ -68,25 +68,25 @@ const AddProperty = () => {
           <Grid container spacing={8}>
             <Grid item xs={12} md={6}>
               <Typography variant="h6">Property Details</Typography>
-              <TextField name="title" label="Title" onChange={handleChange} fullWidth/>
-              <TextField name="description" label="Description" onChange={handleChange} fullWidth/>
-              <TextField name="propertyType" label="Property Type" onChange={handleChange} fullWidth/>
-              <TextField name="propertyStatus" label="Property Status" onChange={handleChange} fullWidth/>
+              <TextField name="title" label="Title" onChange={handleChange} fullWidth sx={{ my:1 }}/>
+              <TextField name="description" label="Description" onChange={handleChange} fullWidth sx={{ my:1 }}/>
+              <TextField name="propertyType" label="Property Type" onChange={handleChange} fullWidth sx={{ my:1 }}/>
+              <TextField name="propertyStatus" label="Property Status" onChange={handleChange} fullWidth sx={{ my:1 }}/>
               <TextField name="listingDate" label="Listing Date" type="date" InputLabelProps={{shrink: true}}
-                         onChange={handleChange} fullWidth/>
-              <TextField name="bedrooms" label="Bedrooms" type="number" onChange={handleChange} fullWidth/>
-              <TextField name="totalArea" label="Total Area" type="number" onChange={handleChange} fullWidth/>
-              <TextField name="lotSize" label="Lot Size" type="number" onChange={handleChange} fullWidth/>
-              <TextField name="currency" label="Currency" onChange={handleChange} fullWidth/>
+                         onChange={handleChange} fullWidth sx={{ my:1 }}/>
+              <TextField name="bedrooms" label="Bedrooms" type="number" onChange={handleChange} fullWidth sx={{ my:1 }}/>
+              <TextField name="totalArea" label="Total Area" type="number" onChange={handleChange} fullWidth sx={{ my:1 }}/>
+              <TextField name="lotSize" label="Lot Size" type="number" onChange={handleChange} fullWidth sx={{ my:1 }}/>
+              <TextField name="currency" label="Currency" onChange={handleChange} fullWidth sx={{ my:1 }}/>
             </Grid>
             <Grid item xs={12} md={6}>
               <Typography variant="h6">Address</Typography>
-              <TextField name="address.city" label="City" onChange={handleChange} fullWidth/>
-              <TextField name="address.state" label="State" onChange={handleChange} fullWidth/>
-              <TextField name="address.zipCode" label="Zip Code" onChange={handleChange} fullWidth/>
-              <TextField name="address.country" label="Country" onChange={handleChange} fullWidth/>
-              <TextField name="address.latitude" label="Latitude" onChange={handleChange} fullWidth/>
-              <TextField name="address.longitude" label="Longitude" onChange={handleChange} fullWidth/>
+              <TextField name="address.city" label="City" onChange={handleChange} fullWidth sx={{ my:1 }}/>
+              <TextField name="address.state" label="State" onChange={handleChange} fullWidth sx={{ my:1 }}/>
+              <TextField name="address.zipCode" label="Zip Code" onChange={handleChange} fullWidth sx={{ my:1 }}/>
+              <TextField name="address.country" label="Country" onChange={handleChange} fullWidth sx={{ my:1 }}/>
+              <TextField name="address.latitude" label="Latitude" onChange={handleChange} fullWidth sx={{ my:1 }}/>
+              <TextField name="address.longitude" label="Longitude" onChange={handleChange} fullWidth sx={{ my:1 }}/>
 
               <Typography variant="h6">Amenities</Typography>
               <FormControlLabel control={<Checkbox name="amenities.hasSwimmingPool" onChange={handleChange}/>}
