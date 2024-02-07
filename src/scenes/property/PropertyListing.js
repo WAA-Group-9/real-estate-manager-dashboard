@@ -39,6 +39,10 @@ const columns = [
 
 const PropertyListing = () => {
     const { data, error, isLoading } = useAxiosFetch(config.apiUrl+'/property');
+    const rowsWithId = (data || []).map((row, index) => ({
+        ...row,
+        id: index,
+    }));
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -51,7 +55,7 @@ const PropertyListing = () => {
     return (
         <Box sx={{ height: 400, width: '100%' }}>
             <DataGrid
-                rows={data || []}
+                rows={rowsWithId}
                 columns={columns}
                 pageSize={5}
                 checkboxSelection
