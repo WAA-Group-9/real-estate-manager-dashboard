@@ -9,7 +9,7 @@ import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import {AddHomeOutlined, PersonAdd} from "@mui/icons-material";
+import {AddHomeOutlined, LogoutOutlined, PersonAdd} from "@mui/icons-material";
 
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
@@ -173,6 +173,14 @@ const DashboardSidebar = () => {
                             title="FAQ Page"
                             to="/faq"
                             icon={<HelpOutlineOutlinedIcon />}
+                            selected={selected}
+                            setSelected={setSelected}
+                        />
+
+                        <Item
+                            title="Logout"
+                            to="/logout"
+                            icon={<LogoutOutlined />}
                             selected={selected}
                             setSelected={setSelected}
                         />

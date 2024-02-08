@@ -7,7 +7,9 @@ import AddProperty from "../scenes/property/AddProperty";
 import AddUser from "../scenes/user/AddUser";
 import UserDetail from "../scenes/user/UserDetail";
 import Login from "../components/Login";
+import Logout from "../components/Logout";
 import ProtectedRoute from "../components/ProtectedRoute";
+
 
 const PageRoutes = () => {
         return (
@@ -21,7 +23,7 @@ const PageRoutes = () => {
                             <Route path="properties/add" element={<AddProperty/>}/>
                             <Route path="users/:id" element={<UserDetail/>}/>
                             <Route path="users/add" element={<AddUser/>}/>
-                            <Route path="pie" element={<div>Pie Page</div>}/>
+                            <Route path="logout" element={<Logout/>}/>
                             <Route path="line" element={<div>Line Page</div>}/>
                             <Route path="faq" element={<div>FAQ Page</div>}/>
                             <Route path="calendar" element={<div>Calendar Page</div>}/>

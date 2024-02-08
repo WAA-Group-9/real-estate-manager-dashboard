@@ -4,39 +4,38 @@ import axios from 'axios';
 const useAuth = () => {
     const [user, setUser] = useState(null);
     const [logged, setLogged] = useState(false);
+    const [loading, setLoading] = useState(true);
 
-    const login = async (googleUser) => {
+    const loginA = async (googleUser) => {
         try {
             console.log("google user",googleUser)
-            const authorizationCode = googleUser.credential;
+            const authorizationCode = googleUser.code;
+            console.log("authorization code",authorizationCode)
             const response = await axios.post('http://localhost:8080/api/v1/user/auth/token', { authorizationCode });
             setUser(response.data.user); // Assuming the user's role is included in the response
-            localStorage.setItem('token',authorizationCode);
-            console.log("response",response.data)
-            console.log("id token", authorizationCode);
-            setLogged(true);
-            console.log(logged);
-            //localStorage.setItem('refresh_token', response.data.refresh_token);
+            localStorage.setItem('access_token',response.data.authorization.access_token);
+            localStorage.setItem('id_token',response.data.authorization.id_token);
+            localStorage.setItem('refresh_token', response.data.authorization.refresh_token);
+            localStorage.setItem('user_type', response.data.user.userType);
+            localStorage.setItem('user_email', response.data.user.email);
+            return Promise.resolve();
         } catch (error) {
             console.error(error);
+            return Promise.reject();
         }
     };
 
     const logout = () => {
         setUser(null);
+        setLogged(false);
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
+        localStorage.removeItem('user_type');
+        localStorage.removeItem('user_email');
     };
 
-    // Load user from local storage
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            setLogged(true);
-        }
-    }, []);
 
-    return { user, login, logout, logged };
+    return { user, loginA, logout, logged, loading };
 };
 
 export default useAuth;
