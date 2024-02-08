@@ -5,12 +5,11 @@ import { Link } from "react-router-dom";
 import { tokens } from "../../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
-import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import {AddHomeOutlined, PersonAdd} from "@mui/icons-material";
 
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
@@ -135,9 +134,9 @@ const DashboardSidebar = () => {
                             setSelected={setSelected}
                         />
                         <Item
-                            title="Contacts Information"
-                            to="/contacts"
-                            icon={<ContactsOutlinedIcon />}
+                            title="Add Property"
+                            to="/properties/add"
+                            icon={<AddHomeOutlined />}
                             selected={selected}
                             setSelected={setSelected}
                         />
@@ -164,9 +163,9 @@ const DashboardSidebar = () => {
                             setSelected={setSelected}
                         />
                         <Item
-                            title="Calendar"
-                            to="/calendar"
-                            icon={<CalendarTodayOutlinedIcon />}
+                            title="Add Users"
+                            to="/users/add"
+                            icon={<PersonAdd />}
                             selected={selected}
                             setSelected={setSelected}
                         />

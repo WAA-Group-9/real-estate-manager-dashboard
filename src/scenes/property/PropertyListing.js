@@ -4,7 +4,6 @@ import { DataGrid } from '@mui/x-data-grid';
 import useAxiosFetch from "../../data/useAxiosFetch";
 import config from "../../config";
 import {Button} from "@mui/material";
-import {Link} from "react-router-dom";
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
@@ -22,15 +21,9 @@ const columns = [
         renderCell: (params) => {
             const property = params.row;
             return (
-                <Link
-                    to={{
-                        pathname: `/properties/${property.id}`,
-                    }}
-                >
-                    <Button variant="contained" color="primary">
+                    <Button href={`/properties/${property.id}`} variant="contained" color="primary">
                         View Details
                     </Button>
-                </Link>
             );
         },
     },
@@ -39,6 +32,10 @@ const columns = [
 
 const PropertyListing = () => {
     const { data, error, isLoading } = useAxiosFetch(config.apiUrl+'/property');
+    const rowsWithId = (data || []).map((row, index) => ({
+        ...row,
+        id: index,
+    }));
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -51,7 +48,7 @@ const PropertyListing = () => {
     return (
         <Box sx={{ height: 400, width: '100%' }}>
             <DataGrid
-                rows={data || []}
+                rows={rowsWithId}
                 columns={columns}
                 pageSize={5}
                 checkboxSelection

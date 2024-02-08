@@ -4,6 +4,7 @@ import DashboardSidebar from "./scenes/global/Sidebar";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import PageRoutes from "./routes/PageRoutes";
+import DynamicBreadcrumbs from "./components/DashboardBreadcrumbs";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
                     <DashboardSidebar isSidebar={isSidebar} />
                     <main className="content">
                         <Topbar setIsSidebar={setIsSidebar} />
+                        <DynamicBreadcrumbs />
                         <PageRoutes />
                     </main>
                 </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from '@mui/material';
+import {Grid, Typography} from '@mui/material';
 import SummaryItem from '../components/SummaryItem'
 import { mockData } from '../data/mockData';
 
@@ -8,6 +8,12 @@ const Dashboard = () => {
   const numOwners = mockData.filter(item => item.owner.userType === 'OWNER').length; // replace with actual data
   const numProperties = mockData.length; // replace with actual data
   const numOffers = mockData.reduce((total, item) => total + item.priceHistory.length, 0); // replace with actual data
+  const propertyCounts = mockData.reduce((counts, item) => {
+        const type = item.propertyType;
+        counts[type] = (counts[type] || 0) + 1;
+        return counts;
+    }, {});
+
 
   return (
     <Grid container spacing={3}>
