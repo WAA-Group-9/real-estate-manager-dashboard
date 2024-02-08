@@ -4,7 +4,6 @@ import { DataGrid } from '@mui/x-data-grid';
 import useAxiosFetch from "../../data/useAxiosFetch";
 import config from "../../config";
 import {Button} from "@mui/material";
-import {Link} from "react-router-dom";
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
@@ -22,15 +21,9 @@ const columns = [
         renderCell: (params) => {
             const property = params.row;
             return (
-                <Link
-                    to={{
-                        pathname: `/properties/${property.id}`,
-                    }}
-                >
-                    <Button variant="contained" color="primary">
+                    <Button href={`/properties/${property.id}`} variant="contained" color="primary">
                         View Details
                     </Button>
-                </Link>
             );
         },
     },
