@@ -20,20 +20,17 @@ const columns = [
     { field: 'username', headerName: 'Username', width: 150 },
     { field: 'telephone', headerName: 'Telephone', width: 150 },
     {
-        field: 'actions',
-        headerName: 'Actions',
+        field: 'view',
+        headerName: 'View',
         sortable: false,
-        width: 250,
+        width: 150,
         disableClickEventBubbling: true,
         renderCell: (params) => {
-            const onClickView = () => {
-                console.log(`Viewing user ${params.row.id}`);
-                // TODO: redirect to user detail page
-            };
+            const user = params.row;
             return (
-                <div>
-                    <Button variant="contained" onClick={onClickView}>View</Button>
-                </div>
+                <Button href={`/users/${user.id}`} variant="contained" color="primary">
+                    View Details
+                </Button>
             );
         }
     },
@@ -56,7 +53,6 @@ const UserListing = () => {
                 rows={data || []}
                 columns={columns}
                 pageSize={5}
-                checkboxSelection
                 disableSelectionOnClick
             />
         </Box>
