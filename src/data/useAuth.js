@@ -7,10 +7,13 @@ const useAuth = () => {
 
     const login = async (googleUser) => {
         try {
-            const id_token = googleUser.credential;
-            //const response = await axios.post('/auth/google', { id_token });
-            //setUser(response.data.user); // Assuming the user's role is included in the response
-            localStorage.setItem('token',id_token);
+            console.log("google user",googleUser)
+            const authorizationCode = googleUser.credential;
+            const response = await axios.post('http://localhost:8080/api/v1/user/auth/token', { authorizationCode });
+            setUser(response.data.user); // Assuming the user's role is included in the response
+            localStorage.setItem('token',authorizationCode);
+            console.log("response",response.data)
+            console.log("id token", authorizationCode);
             setLogged(true);
             console.log(logged);
             //localStorage.setItem('refresh_token', response.data.refresh_token);

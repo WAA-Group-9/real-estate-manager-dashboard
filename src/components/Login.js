@@ -5,7 +5,8 @@ const Login = () => {
     const { login } = useAuth();
 
     const responseGoogle = (response) => {
-        const googleUser = response; // This should be an instance of GoogleUser
+        //console.log(response)
+        const googleUser = response;
         login(googleUser);
     }
 
@@ -13,6 +14,7 @@ const Login = () => {
         <div>
             <GoogleLogin
                 buttonText="Login"
+                responseType="code"
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}
             />
