@@ -25,7 +25,7 @@ const PageRoutes = () => {
                             <Route path="users/:id" element={<UserDetail/>}/>
                             <Route path="users/add" element={<AddUser/>}/>
                             <Route path="logout" element={<Logout/>}/>
-                            <Route path="user/:id/offers" element={<OfferListing/>}/>
+                            <Route path="properties/:id/offers" element={<OfferListing/>}/>
                             <Route path="faq" element={<div>FAQ Page</div>}/>
                             <Route path="calendar" element={<div>Calendar Page</div>}/>
                             <Route path="geography" element={<div>Geography Page</div>}/>
