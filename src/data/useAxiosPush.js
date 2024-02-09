@@ -9,7 +9,12 @@ const useAxiosPush = (url, data) => {
     const pushData = async () => {
         setIsLoading(true);
         try {
-            const result = await axios.post(url, data);
+            const token = localStorage.getItem('id_token');
+            const result = await axios.post(url, data, {
+                headers: {
+                    'Authorization': `Bearer ${token}` // Add token to the request header
+                }
+            });
             setResponse(result.data);
             setIsLoading(false);
         } catch (error) {
