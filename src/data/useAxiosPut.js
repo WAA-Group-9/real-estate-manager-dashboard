@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-const useAxiosPush = (url, data) => {
+const useAxiosPut = () => {
     const [response, setResponse] = useState(null);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
-    const pushData = async () => {
+    const putData = async (url, data = {}) => {
         setIsLoading(true);
         try {
             const token = localStorage.getItem('id_token');
-            const result = await axios.post(url, data, {
+            const result = await axios.put(url, {}, {
                 headers: {
-                    'Authorization': `Bearer ${token}` // Add token to the request header
+                    'Authorization': `Bearer ${token}`
                 }
             });
             setResponse(result.data);
@@ -23,7 +23,7 @@ const useAxiosPush = (url, data) => {
         }
     };
 
-    return { response, error, isLoading, pushData };
+    return { response, error, isLoading, putData };
 };
 
-export default useAxiosPush;
+export default useAxiosPut;

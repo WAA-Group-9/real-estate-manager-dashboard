@@ -16,14 +16,20 @@ const columns = [
         field: 'view',
         headerName: 'View',
         sortable: false,
-        width: 150,
+        width: 300,
         disableClickEventBubbling: true,
         renderCell: (params) => {
             const property = params.row;
             return (
+                <div>
                     <Button href={`/properties/${property.id}`} variant="contained" color="primary">
                         View Details
                     </Button>
+
+                    <Button href={`/properties/${property.id}/offers`} variant="contained" color="primary">
+                        View Offers
+                    </Button>
+                </div>
             );
         },
     },
@@ -31,11 +37,7 @@ const columns = [
 ];
 
 const PropertyListing = () => {
-    const { data, error, isLoading } = useAxiosFetch(config.apiUrl+'/property');
-    const rowsWithId = (data || []).map((row, index) => ({
-        ...row,
-        id: index,
-    }));
+    const { data, error, isLoading } = useAxiosFetch(config.apiUrl+'/properties');
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -48,7 +50,7 @@ const PropertyListing = () => {
     return (
         <Box sx={{ height: 400, width: '100%' }}>
             <DataGrid
-                rows={rowsWithId}
+                rows={ data || [] }
                 columns={columns}
                 pageSize={5}
                 checkboxSelection

@@ -1,13 +1,16 @@
-import { Button, Grid, Paper, TextField, Typography } from '@mui/material';
+import {Button, Chip, Grid, Paper, TextField, Typography} from '@mui/material';
 import { useParams } from "react-router-dom";
 import useAxiosFetch from "../../data/useAxiosFetch";
+import useAxiosPut from "../../data/useAxiosPut";
 import config from "../../config";
 import {useEffect, useState} from 'react';
 
 const PropertyDetail = () => {
     const { id } = useParams();
-    const { data, error, isLoading } = useAxiosFetch(config.apiUrl + '/property/' + id);
+    const { data, error, isLoading } = useAxiosFetch(config.apiUrl + '/properties/' + id);
     const [formData, setFormData] = useState({});
+    const [putResponse, setPutResponse] = useState(null);
+    const [putError, setPutError] = useState(null);
 
 
     useEffect(() => {
@@ -30,8 +33,16 @@ const PropertyDetail = () => {
     };
 
     const handleSaveChanges = () => {
-        // You can implement the save changes functionality here
-        console.log("Save changes");
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        useAxiosPut(config.apiUrl + '/properties/' + id, formData)
+            .then(response => {
+                setPutResponse(response.data);
+                console.log("Changes saved");
+            })
+            .catch(error => {
+                setPutError(error);
+                console.log("Error saving changes");
+            });
     };
 
     if (isLoading) {

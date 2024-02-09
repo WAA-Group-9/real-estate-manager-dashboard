@@ -9,6 +9,7 @@ import UserDetail from "../scenes/user/UserDetail";
 import Login from "../components/Login";
 import Logout from "../components/Logout";
 import ProtectedRoute from "../components/ProtectedRoute";
+import OfferListing from "../scenes/offer/OfferListing";
 
 
 const PageRoutes = () => {
@@ -24,7 +25,7 @@ const PageRoutes = () => {
                             <Route path="users/:id" element={<UserDetail/>}/>
                             <Route path="users/add" element={<AddUser/>}/>
                             <Route path="logout" element={<Logout/>}/>
-                            <Route path="line" element={<div>Line Page</div>}/>
+                            <Route path="properties/:id/offers" element={<OfferListing/>}/>
                             <Route path="faq" element={<div>FAQ Page</div>}/>
                             <Route path="calendar" element={<div>Calendar Page</div>}/>
                             <Route path="geography" element={<div>Geography Page</div>}/>

@@ -18,6 +18,7 @@ const useAuth = () => {
             localStorage.setItem('refresh_token', response.data.authorization.refresh_token);
             localStorage.setItem('user_type', response.data.user.userType);
             localStorage.setItem('user_email', response.data.user.email);
+            localStorage.setItem('user_id', response.data.user.id);
             return Promise.resolve();
         } catch (error) {
             console.error(error);
@@ -32,6 +33,8 @@ const useAuth = () => {
         localStorage.removeItem('refresh_token');
         localStorage.removeItem('user_type');
         localStorage.removeItem('user_email');
+        localStorage.removeItem('user_id');
+
     };
 
 

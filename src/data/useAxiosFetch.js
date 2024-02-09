@@ -10,7 +10,12 @@ const useAxiosFetch = (url) => {
         const fetchData = async () => {
             setIsLoading(true);
             try {
-                const response = await axios.get(url);
+                const token = localStorage.getItem('id_token');
+                const response = await axios.get(url, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
                 setData(response.data);
                 setIsLoading(false);
             } catch (error) {
