@@ -1,4 +1,4 @@
-import { Button, Grid, Paper, TextField, Typography } from '@mui/material';
+import {Button, Chip, Grid, Paper, TextField, Typography} from '@mui/material';
 import { useParams } from "react-router-dom";
 import useAxiosFetch from "../../data/useAxiosFetch";
 import config from "../../config";
@@ -6,7 +6,7 @@ import {useEffect, useState} from 'react';
 
 const PropertyDetail = () => {
     const { id } = useParams();
-    const { data, error, isLoading } = useAxiosFetch(config.apiUrl + '/property/' + id);
+    const { data, error, isLoading } = useAxiosFetch(config.apiUrl + '/properties/' + id);
     const [formData, setFormData] = useState({});
 
 
