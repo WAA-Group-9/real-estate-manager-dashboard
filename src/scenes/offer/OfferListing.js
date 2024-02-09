@@ -56,6 +56,13 @@ const OfferListing = () => {
     ];
 
     const handleAccept = async (offer) => {
+        const currentUserEmail = localStorage.getItem('user_email');
+        const currentUserRole = localStorage.getItem('user_type');
+        if (offer.email !== currentUserEmail || currentUserRole === 'ADMIN') {
+            alert('Only the owner of the offer can accept it and admins cannot accept offers.');
+            return;
+        }
+
         const url = config.apiUrl + '/offers' + `/${offer.id}/accept`;
         try {
             const token = localStorage.getItem('id_token');
@@ -78,10 +85,16 @@ const OfferListing = () => {
     };
 
     const handleReject = async (offer) => {
+        const currentUserEmail = localStorage.getItem('user_email');
+        const currentUserRole = localStorage.getItem('user_type');
+        if (offer.email !== currentUserEmail || currentUserRole === 'ADMIN') {
+            alert('Only the owner of the offer can accept it and admins cannot accept offers.');
+            return;
+        }
         const url = config.apiUrl + '/offers' + `/${offer.id}/reject`;
         try {
             const token = localStorage.getItem('id_token');
-            await axios.put(url, {}, {
+            await axios.get(url, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
